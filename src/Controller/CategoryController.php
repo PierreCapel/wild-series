@@ -43,9 +43,9 @@ class CategoryController extends AbstractController
         ->findBy(['category' => $categoryId],
                 ['id' => 'DESC'], 3);
 
-        if (!$categoryName){
+        if (!$categoryId){
             throw $this->createNotFoundException(
-                'No' . $categoryName . ' serie found'
+                'No ' . $categoryName . ' serie found'
             );
         }
         return $this->render('category/show.html.twig', [
