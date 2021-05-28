@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
+
+$primary: #faa11C;
+$body-color: #faa11C;
+$body-bg: #E0F8FF;
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    color : $primary;
+    background-color: $body-bg;
+}
+.main-title{
+    font-size: 90px;
+    font-family: 'Days One';
+    text-align: center;
+    align-items: center;
+}
