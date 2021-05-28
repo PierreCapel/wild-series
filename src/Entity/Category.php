@@ -20,7 +20,7 @@ class Category
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Program::class", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Program", mappedBy="category")
      */
     private $programs;
 
