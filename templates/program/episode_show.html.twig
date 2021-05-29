@@ -9,29 +9,25 @@
 			<img class="align-self-start mr-3 w-25" src="{{program.poster}}" alt="{{ program.title }} poster">
 		</div>
 		<div class="media-body">
-			<h1 class="mt-0 text-center">{{ program.title }}</h1>
-			<p>{{ season.description }}</p>
+			<h1 class="mt-0 text-center">{{ episode.number }}
+				-
+				{{ episode.title }}</h1>
+			<p>Saison :
+				{{ season.number }}</p>
+			<p>{{ episode.synopsis }}</p>
 			<p>Catégorie :
 				{{ program.category.name }}</p>
-			{% for episode in episodes %}
-			<li>
-				<a href="{{ path('program_episode_show', {program: program.id, season: season.id, episode: episode.id}) }}">
-					Episode {{ episode.number }} : 
-					{{ episode.title}}
-				</a>
-			</li>
-			{% endfor %}
 			<br/><br/><br/><br/><br/>
 		</div>
 		<a href="{{ path('program_index') }}">
 			Retour à la liste des séries
 		</a>
-		</br>
-		<a href="{{ path('program_show', {id: program.id}) }}">
-			Retour à la liste des saisons
-		</a>
-
-	</div>
-
-
-{% endblock %}
+	</br>
+	<a href="{{ path('program_show', {id: program.id}) }}">
+		Retour à la liste des saisons
+	</a>
+	</br>
+	<a href="{{ path('program_season_show', {program: program.id, season: season.id}) }}">
+		Retour à la liste des épisodes
+	</a>
+</div>{% endblock %}
