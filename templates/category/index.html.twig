@@ -1,8 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{% for category in categories %}
-<a href="{{path("category_show", {categoryName: category.name} )}}"> {{ category.name }} </a>
-{% endfor %}
-
+<div class = "container m-4">
+	{% for category in categories %}
+    <ul>
+		<a href="{{path("category_show", {categoryName: category.name} )}}">
+			{{ category.name }}
+		</a>
+    </ul>
+	{% endfor %}
+</div>
+</br>
+<a class ="m-5" href="{{ path('category_new') }}">
+	Ajouter une catégorie
+</a>
 {% endblock %}
