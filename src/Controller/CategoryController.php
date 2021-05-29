@@ -52,7 +52,6 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * 
      * @Route("/{categoryName}", name = "show")
      */
     public function show(string $categoryName)
