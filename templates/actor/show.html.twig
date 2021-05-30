@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1> {{actor.name}} </h1>
+    {% for program in programs %}
+        <div>
+            <p>{{ loop.index }} / {{ program.title }}</p>
+            <p>{{ program.summary }}</p>
+			<a href="{{ path("program_show", {id: program.id}) }}">Voir la fiche</a>
+        </div>
+    {% else %}
+        Aucune série trouvée.
+    {% endfor %}
+
+    <a href="{{ path('app_index') }}">
+        Retour à l'accueil
+    </a>
+
+{% endblock %}
