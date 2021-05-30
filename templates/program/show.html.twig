@@ -21,6 +21,14 @@
 					</a>
 				</ul>
 			{% endfor %}
+			<strong>Acteurs :</strong>
+			<ul>
+			{% for actor in program.actors %}
+				<li>{{ actor.name }} </li>
+			{% else %}
+				<li>Aucun acteur pour cette série</li>
+			{% endfor %}
+			</ul>
 			<br/><br/><br/><br/><br/>
 		</div>
 

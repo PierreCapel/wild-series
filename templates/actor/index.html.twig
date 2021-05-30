@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class = "container m-4">
+	{% for actor in actors %}
+    <ul>
+		<a href="{{path("actor_show", {id: actor.id} )}}">
+			{{ actor.name }}
+		</a>
+    </ul>
+	{% endfor %}
+</div>
+</br>
+{# <a class ="m-5" href="{{ path('category_new') }}">
+	Ajouter une catégorie
+</a> #}
+{% endblock %}
