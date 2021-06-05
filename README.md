@@ -1,2 +1,2 @@
 # wild-series
-[Quest 13 video demo](https://drive.google.com/file/d/1IAv10PYBNK2XTcsdRveqFlVsOajhobPA/view)
+[Quest 17 video demo](https://drive.google.com/file/d/1-zpbEZ4q9UaXB8JhnJekrlo0HJKChXO7/view)
