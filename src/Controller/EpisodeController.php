@@ -53,6 +53,7 @@ class EpisodeController extends AbstractController
     }
 
     #[Route('/{slug}/edit', name: 'episode_edit', methods: ['GET', 'POST'])]
+
     public function edit(Request $request, Episode $episode): Response
     {
         $form = $this->createForm(EpisodeType::class, $episode);
@@ -70,7 +71,7 @@ class EpisodeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'episode_delete', methods: ['POST'])]
+    #[Route('/{slug}', name: 'episode_delete', methods: ['POST'])]
     public function delete(Request $request, Episode $episode): Response
     {
         if ($this->isCsrfTokenValid('delete'.$episode->getId(), $request->request->get('_token'))) {

@@ -19,6 +19,7 @@
 				{{ program.category.name }}</p>
 			<br/><br/><br/><br/><br/>
 		</div>
+    	<a href="{{ path('episode_edit', {'slug': episode.slug}) }}">Modifier</a></br>
 		<a href="{{ path('program_index') }}">
 			Retour à la liste des séries
 		</a>
