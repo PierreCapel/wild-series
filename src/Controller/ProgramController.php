@@ -10,6 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Form\ProgramType;
+use App\Service\Slugify;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
      * @Route("/programs", name = "program_")
@@ -34,11 +36,13 @@ class ProgramController extends AbstractController
     /**
      * @Route("/new", name = "new")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Slugify $slugify): Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
+        $slug = $slugify->generate($program->getTitle());
+        $program->setSlug($slug);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($program);
@@ -51,7 +55,7 @@ class ProgramController extends AbstractController
     }
 
      /**
-     * @Route("/{id}", methods={"GET"}, requirements={"id"="\d+"}, name="show")
+     * @Route("/{slug}", methods={"GET"}, name="show")
      * @return Response
      */
     public function show(Program $program): Response
@@ -70,7 +74,7 @@ class ProgramController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{program}/seasons/{season}", name ="season_show")
+     * @Route("/{slug}/seasons/{season}", name ="season_show")
      * @return Response
      */
     public function showSeason(Program $program, Season $season): Response
@@ -90,9 +94,11 @@ class ProgramController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{program}/seasons/{season}/episodes/{episode}", name = "episode_show" )
+     * @Route("/{program_slug}/seasons/{season}/episodes/{episode_slug}", name = "episode_show" )
+     * @ParamConverter("program", class = "App\Entity\Program", options={"mapping": {"program_slug": "slug"}})
+     * @ParamConverter("episode", class = "App\Entity\Episode", options={"mapping": {"episode_slug": "slug"}})
+     * @return Response
      */
-
     public function showEpisode(Program $program, Season $season, Episode $episode): Response
     {
         return $this->render('/program/episode_show.html.twig', [

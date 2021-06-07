@@ -15,7 +15,7 @@
 				{{ program.category.name }}</p>
 			{% for season in seasons %}
 				<ul>
-					<a href="{{ path('program_season_show', {program: program.id, season: season.id}) }}">
+					<a href="{{ path('program_season_show', {slug: program.slug, season: season.id}) }}">
 						Saison
 						{{ season.getNumber}}
 					</a>
